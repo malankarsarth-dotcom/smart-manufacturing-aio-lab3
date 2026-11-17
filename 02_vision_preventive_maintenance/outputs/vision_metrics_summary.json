@@ -1,0 +1,22 @@
+{
+  "dataset": {
+    "total_images": 400,
+    "train": 280,
+    "val": 60,
+    "test": 60
+  },
+  "pre_ai_cnn": {
+    "threshold": 0.5,
+    "accuracy": 0.5333,
+    "precision": 1.0,
+    "recall": 0.0667,
+    "f1_score": 0.125
+  },
+  "post_ai_cnn": {
+    "threshold": 0.7,
+    "accuracy": 0.8833,
+    "precision": 0.871,
+    "recall": 0.9,
+    "f1_score": 0.8852
+  }
+}

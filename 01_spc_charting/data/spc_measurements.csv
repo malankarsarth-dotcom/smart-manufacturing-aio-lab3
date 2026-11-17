@@ -1,0 +1,26 @@
+sample_id,timestamp,diameter_mm,ambient_temp_c,vibration_rms,operator,shift,ground_truth_state,true_root_cause
+1,2026-11-17 08:00,50.457,21.79,0.514,Op_A,Morning,In-Control,None
+2,2026-11-17 08:15,48.44,22.32,0.532,Op_A,Morning,In-Control,None
+3,2026-11-17 08:30,51.126,22.22,0.427,Op_A,Morning,In-Control,None
+4,2026-11-17 08:45,51.411,22.25,0.484,Op_A,Morning,In-Control,None
+5,2026-11-17 09:00,47.073,22.26,0.476,Op_A,Morning,In-Control,None
+6,2026-11-17 09:15,48.047,23.28,0.468,Op_A,Morning,In-Control,None
+7,2026-11-17 09:30,50.192,21.76,0.486,Op_A,Morning,In-Control,None
+8,2026-11-17 09:45,41.5,21.69,0.575,Op_A,Morning,Out-of-Control,Raw material inconsistency (undersized stock)
+9,2026-11-17 10:00,49.975,21.51,0.457,Op_A,Morning,In-Control,None
+10,2026-11-17 10:15,48.72,22.37,0.548,Op_A,Morning,In-Control,None
+11,2026-11-17 10:30,51.319,22.68,0.416,Op_A,Morning,In-Control,None
+12,2026-11-17 10:45,51.167,21.93,0.483,Op_A,Morning,In-Control,None
+13,2026-11-17 11:00,50.099,21.5,0.508,Op_B,Morning,In-Control,None
+14,2026-11-17 11:15,51.691,21.51,0.529,Op_B,Morning,In-Control,None
+15,2026-11-17 11:30,50.701,22.39,0.536,Op_B,Morning,In-Control,None
+16,2026-11-17 11:45,48.711,22.45,0.54,Op_B,Morning,In-Control,None
+17,2026-11-17 12:00,51.973,22.87,0.556,Op_B,Afternoon,Drift-Warning,Gradual tool wear & thermal drift
+18,2026-11-17 12:15,52.456,23.27,0.597,Op_B,Afternoon,Drift-Warning,Gradual tool wear & thermal drift
+19,2026-11-17 12:30,52.535,23.49,0.636,Op_B,Afternoon,Drift-Warning,Gradual tool wear & thermal drift
+20,2026-11-17 12:45,52.901,23.83,0.685,Op_B,Afternoon,Drift-Warning,Gradual tool wear & thermal drift
+21,2026-11-17 13:00,53.803,24.32,0.725,Op_B,Afternoon,Drift-Warning,Gradual tool wear & thermal drift
+22,2026-11-17 13:15,54.466,24.54,0.759,Op_B,Afternoon,Drift-Warning,Gradual tool wear & thermal drift
+23,2026-11-17 13:30,55.08,24.73,0.783,Op_B,Afternoon,Out-of-Control,Severe tool wear / Machine calibration shift
+24,2026-11-17 13:45,55.269,25.36,0.83,Op_B,Afternoon,Out-of-Control,Severe tool wear / Machine calibration shift
+25,2026-11-17 14:00,55.974,25.84,0.876,Op_B,Afternoon,Out-of-Control,Severe tool wear / Machine calibration shift
