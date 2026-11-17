@@ -30,7 +30,7 @@ def create_header(fig, title: str, subtitle: str = "") -> None:
 
 
 def build_page_1(pdf: PdfPages) -> None:
-    """Page 1: Title, Live Deployment Links, Context, and Executive Summary Table."""
+    """Page 1: Title, Live Deployment Links, Objectives, and Executive Summary Table."""
     fig = plt.figure(figsize=(8.5, 11), dpi=200)
     create_header(
         fig,
@@ -42,7 +42,7 @@ def build_page_1(pdf: PdfPages) -> None:
     rect = plt.Rectangle((0.06, 0.705), 0.88, 0.115, transform=fig.transFigure,
                          facecolor="#ebf8ff", edgecolor="#3182ce", linewidth=1.5, zorder=1)
     fig.add_artist(rect)
-    fig.text(0.08, 0.795, "🌐 LIVE CLOUD APPLICATION & SOURCE CODE", fontsize=11, weight="bold", color="#2b6cb0")
+    fig.text(0.08, 0.795, "LIVE CLOUD APPLICATION & SOURCE CODE", fontsize=11, weight="bold", color="#2b6cb0")
     fig.text(0.08, 0.765, "Streamlit Cloud URL:", fontsize=9.5, weight="bold", color="#2d3748")
     fig.text(0.27, 0.765, "https://smart-manufacturing-aio-lab3-jplwhxqnbsdsbtn9ydyaww.streamlit.app/",
              fontsize=9.5, color="#1a365d", weight="bold")
@@ -52,29 +52,46 @@ def build_page_1(pdf: PdfPages) -> None:
     fig.text(0.08, 0.712, "Interactive Features: Live SPC toggle, sensor telemetry, part inspector, on-the-fly defect classifier.",
              fontsize=8, style="italic", color="#4a5568")
 
-    # Lab slides thumbnail
-    slide_path = Path("/Users/sam/.gemini/antigravity/brain/b0aa9941-5ee7-4910-9a38-a48b4c451704/.user_uploaded/media_1794940731763_7a09aca4.png")
-    lab_slide_path = Path("/Users/sam/.gemini/antigravity/brain/b0aa9941-5ee7-4910-9a38-a48b4c451704/.user_uploaded/media_1794933532231_375e78fd.jpg")
-    img_to_show = lab_slide_path if lab_slide_path.exists() else None
+    # Dual Problem Context Callout Cards (replacing the slide screenshot)
+    # Box 1: Use Case 1
+    rect_uc1 = plt.Rectangle((0.06, 0.44), 0.425, 0.24, transform=fig.transFigure,
+                             facecolor="#f7fafc", edgecolor="#cbd5e0", linewidth=1.2, zorder=1)
+    fig.add_artist(rect_uc1)
+    fig.text(0.08, 0.65, "USE CASE 1: SPC CHARTING", fontsize=10, weight="bold", color="#2c5282")
+    fig.text(0.08, 0.625, "Objective:", fontsize=8.5, weight="bold", color="#2d3748")
+    fig.text(0.16, 0.625, "Statistical Process Control on 25 part diameters.", fontsize=8.5, color="#4a5568")
+    fig.text(0.08, 0.605, "Nominal:", fontsize=8.5, weight="bold", color="#2d3748")
+    fig.text(0.16, 0.605, "Mean = 50.0 mm, Std Dev = 1.50 mm.", fontsize=8.5, color="#4a5568")
+    fig.text(0.08, 0.585, "Pre-AI Issue:", fontsize=8.5, weight="bold", color="#c53030")
+    fig.text(0.08, 0.545, "Outliers and drift inflate standard deviation\n(s = 3.05 mm), pushing UCL to 60.16 mm and\nmasking tool-wear drift (Recall: 10%).", fontsize=8, color="#4a5568")
+    fig.text(0.08, 0.525, "Post-AI Solution:", fontsize=8.5, weight="bold", color="#276749")
+    fig.text(0.08, 0.485, "Robust Median/MAD limits + EWMA trend detection\nflags drift at Sample 20 (3 cycles before\ncatastrophic failure, F1: 0.737).", fontsize=8, color="#4a5568")
 
-    if img_to_show:
-        ax_img = fig.add_axes([0.06, 0.38, 0.88, 0.30])
-        img = mpimg.imread(str(img_to_show))
-        ax_img.imshow(img)
-        ax_img.axis("off")
-        ax_img.set_title("Lab Exercise Specifications (SPC Charting & Vision-Based Maintenance)", fontsize=9.5, weight="bold", color="#4a5568", pad=6)
+    # Box 2: Use Case 2
+    rect_uc2 = plt.Rectangle((0.515, 0.44), 0.425, 0.24, transform=fig.transFigure,
+                             facecolor="#f7fafc", edgecolor="#cbd5e0", linewidth=1.2, zorder=1)
+    fig.add_artist(rect_uc2)
+    fig.text(0.535, 0.65, "USE CASE 2: VISION CNN INSPECTION", fontsize=10, weight="bold", color="#276749")
+    fig.text(0.535, 0.625, "Objective:", fontsize=8.5, weight="bold", color="#2d3748")
+    fig.text(0.615, 0.625, "Camera-based defect detection on 400 parts.", fontsize=8.5, color="#4a5568")
+    fig.text(0.535, 0.605, "Classes:", fontsize=8.5, weight="bold", color="#2d3748")
+    fig.text(0.615, 0.605, "Normal vs Defective (Scratch, Pit, Edge-chip).", fontsize=8.5, color="#4a5568")
+    fig.text(0.535, 0.585, "Pre-AI Issue:", fontsize=8.5, weight="bold", color="#c53030")
+    fig.text(0.535, 0.545, "Unscaled [0..255] pixels + naive shallow CNN\nsuffered gradient instability and mode collapse,\nmissing 28 of 30 defective parts (Recall: 6.7%).", fontsize=8, color="#4a5568")
+    fig.text(0.535, 0.525, "Post-AI Solution:", fontsize=8.5, weight="bold", color="#276749")
+    fig.text(0.535, 0.485, "Normalized inputs + Data Augmentation + Dropout\n+ Validation Threshold Tuning (0.70) delivers\n88.3% Accuracy, 90.0% Recall, and 0.885 F1.", fontsize=8, color="#4a5568")
 
     # Executive Summary Comparison Table
-    fig.text(0.06, 0.34, "Executive Performance Overview (Pre-AI vs. Post-AI)", fontsize=12, weight="bold", color="#1a365d")
+    fig.text(0.06, 0.395, "Executive Performance Overview (Pre-AI vs. Post-AI)", fontsize=11, weight="bold", color="#1a365d")
 
     table_data = [
         ["System Module", "Pre-AI Baseline", "Post-AI Optimization", "Primary Impact / Finding"],
         ["Use Case 1: SPC Charting\n(Shaft Diameter, N=25)", "Static 3-Sigma\nF1: 0.182 | Recall: 10.0%", "Robust EWMA + Isolation Forest\nF1: 0.737 | Recall: 70.0%", "Sample 8 outlier masked drift in Pre-AI.\nPost-AI caught tool wear at Sample 20."],
         ["Use Case 2: Vision CNN\n(Part Inspection, N=400)", "Naive Raw-Pixel CNN\nAccuracy: 53.3% | Recall: 6.7%", "Augmented + Regularized CNN\nAccuracy: 88.3% | Recall: 90.0%", "+83.3% defect capture rate;\n+608% relative F1 gain (0.125 -> 0.885)."],
-        ["Closed-Loop Coupling\n(Factory Automation)", "Isolated, manual silo inspections\n(No data exchange)", "SPC early drift dynamically triggers\nhigh-speed camera verification", "Eliminates 90% redundant imaging compute\nwhile maintaining zero-escape QA."],
+        ["Closed-Loop Coupling\n(Factory Automation)", "Isolated, manual silo inspections\n(No telemetry integration)", "SPC early drift dynamically triggers\nhigh-speed optical camera", "Eliminates 90% redundant imaging compute\nwhile maintaining zero-escape QA."],
     ]
 
-    ax_table = fig.add_axes([0.06, 0.05, 0.88, 0.27])
+    ax_table = fig.add_axes([0.06, 0.06, 0.88, 0.31])
     ax_table.axis("off")
     tab = ax_table.table(
         cellText=table_data,
@@ -84,7 +101,7 @@ def build_page_1(pdf: PdfPages) -> None:
     )
     tab.auto_set_font_size(False)
     tab.set_fontsize(8.5)
-    tab.scale(1.0, 1.8)
+    tab.scale(1.0, 1.9)
 
     # Style header row
     for col in range(4):
